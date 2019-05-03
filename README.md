@@ -1,6 +1,8 @@
 # Rasa_with_Botium
 
-![Rasa Logo](images/21214473.png) ![Botium Logo](images/Botium_logo.png)
+![Rasa Logo](images/21214473_small.png) ![Botium Logo](images/Botium_logo.png)
+
+![Rasa Logo](images/21214473_medium.png) ![Botium Logo](images/26287439.png)
 
 Having created a [slackbot with GCP](http://github.com/mramshaw/GCP-Slackbot), [Alexa Skills](http://github.com/mramshaw/Alexa-Stuff), 
 and [Google Assistant Apps](http://github.com/mramshaw/Google-Assistant), it seemed to be time to have a look at [Rasa](http://rasa.com/)
