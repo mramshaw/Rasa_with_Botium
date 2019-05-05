@@ -1,12 +1,12 @@
-# Rasa_with_Botium
-
-![Rasa Logo](images/21214473_small.png) ![Botium Logo](images/Botium_logo.png)
+# Rasa with Botium
 
 Having created a [slackbot with GCP](http://github.com/mramshaw/GCP-Slackbot), [Alexa Skills](http://github.com/mramshaw/Alexa-Stuff), 
 and [Google Assistant Apps](http://github.com/mramshaw/Google-Assistant), it was time to have a look at [Rasa](http://rasa.com/)
-and [Botium](http://www.botium.at/).
+as well as [Botium](http://www.botium.at/).
 
-Rasa and Botium are both Open-Source. Rasa is a general chatbot framework, while Botium is a generic chatbot testing framework.
+Rasa and Botium are both Open-Source.
+
+Rasa is a general chatbot framework, while Botium is a generic chatbot testing framework.
 
 Both can be added into existing frameworks via [webhooks](http://en.wikipedia.org/wiki/Webhook).
 
@@ -58,7 +58,7 @@ And the Rasa Blog version:
 
     http://blog.rasa.com/do-it-yourself-nlp-for-bot-developers/
 
-[The [Medium.com](http://medium.com/) version also has some interesting comments.]
+[The [Medium.com](http://medium.com/) version some interesting comments - which the Rasa Blog version does not.]
 
 #### Rasa Docs
 
