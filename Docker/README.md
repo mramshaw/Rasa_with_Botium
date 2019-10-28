@@ -2,6 +2,21 @@
 
 Trying out Rasa with Docker
 
+## Contents
+
+The contents are as follows:
+
+* [Verify Prerequisites](#verify-prerequisites)
+* [Check for the latest version of Rasa](#check-for-the-latest-version-of-rasa)
+* [Pull the Docker image](#pull-the-docker-image)
+* [Create a project](#create-a-project)
+* [Inspect the default intents](#inspect-the-default-intents)
+* [Interact with the bot](#interact-with-the-bot)
+* [Inspect the default story](#inspect-the-default-story)
+* [Inspect the default domain](#inspect-the-default-domain)
+* [To Do](#to-do)
+* [Credits](#credits)
+
 ## Verify Prerequisites
 
 Check for `docker` and `docker-compose`:
@@ -22,17 +37,17 @@ __1.4.2__ as per http://hub.docker.com/r/rasa/rasa/tags
 ```bash
 $ docker pull rasa/rasa:1.4.2
 1.4.2: Pulling from rasa/rasa
-8d691f585fa8: Pull complete 
-49bdb6f85638: Pull complete 
-73c12d19d464: Pull complete 
-9964ba7bfd8f: Pull complete 
-18a21a4ca4a0: Pull complete 
-d9072db337b5: Pull complete 
-8a377a815e92: Pull complete 
-dca83e7d804c: Pull complete 
-5310e3b991c6: Pull complete 
-e92acf81f819: Pull complete 
-1fd0e7fa4db2: Pull complete 
+8d691f585fa8: Pull complete
+49bdb6f85638: Pull complete
+73c12d19d464: Pull complete
+9964ba7bfd8f: Pull complete
+18a21a4ca4a0: Pull complete
+d9072db337b5: Pull complete
+8a377a815e92: Pull complete
+dca83e7d804c: Pull complete
+5310e3b991c6: Pull complete
+e92acf81f819: Pull complete
+1fd0e7fa4db2: Pull complete
 Digest: sha256:bf70a20e4067c1afda970111c5dd44de0ea86aa3d21809e1b05002a91b9289e6
 Status: Downloaded newer image for rasa/rasa:1.4.2
 docker.io/rasa/rasa:1.4.2
@@ -282,12 +297,12 @@ Epoch 100/100
 2019-10-28 20:14:11 INFO     rasa.core.agent  - Persisted model to '/tmp/tmpzb41eyv7/core'
 Core model training completed.
 Training NLU model...
-2019-10-28 20:14:11 INFO     rasa.nlu.training_data.training_data  - Training data stats: 
+2019-10-28 20:14:11 INFO     rasa.nlu.training_data.training_data  - Training data stats:
 	- intent examples: 43 (7 distinct intents)
 	- Found intents: 'goodbye', 'greet', 'mood_unhappy', 'mood_great', 'affirm', 'deny', 'bot_challenge'
 	- Number of response examples: 0 (0 distinct response)
 	- entity examples: 0 (0 distinct entities)
-	- found entities: 
+	- found entities:
 
 2019-10-28 20:14:11 INFO     rasa.nlu.model  - Starting to train component WhitespaceTokenizer
 2019-10-28 20:14:11 INFO     rasa.nlu.model  - Finished training component.
@@ -312,8 +327,184 @@ If you want to speak to the assistant, run 'rasa shell' at any time inside the p
 $
 ```
 
+## Inspect the default intents
+
+```bash
+$ cat app/data/nlu.md
+## intent:greet
+- hey
+- hello
+- hi
+- good morning
+- good evening
+- hey there
+
+## intent:goodbye
+- bye
+- goodbye
+- see you around
+- see you later
+
+## intent:affirm
+- yes
+- indeed
+- of course
+- that sounds good
+- correct
+
+## intent:deny
+- no
+- never
+- I don't think so
+- don't like that
+- no way
+- not really
+
+## intent:mood_great
+- perfect
+- very good
+- great
+- amazing
+- wonderful
+- I am feeling very good
+- I am great
+- I'm good
+
+## intent:mood_unhappy
+- sad
+- very sad
+- unhappy
+- bad
+- very bad
+- awful
+- terrible
+- not very good
+- extremely sad
+- so sad
+
+## intent:bot_challenge
+- are you a bot?
+- are you a human?
+- am I talking to a bot?
+- am I talking to a human?
+$
+```
+
+## Interact with the bot
+
+Lets see how it deals with imperfect data:
+
+```bash
+$ docker run -v $(pwd)/app:/app --name rasa -it --rm rasa/rasa:1.4.2 shell
+2019-10-28 20:34:18 INFO     root  - Connecting to channel 'cmdline' which was specified by the '--connector' argument. Any other channels will be ignored. To connect to all given channels, omit the '--connector' argument.
+2019-10-28 20:34:18 INFO     root  - Starting Rasa server on http://localhost:5005
+Bot loaded. Type a message and press enter (use '/stop' to exit):
+Your input ->  heya                                                                                                                                                                                                                                           
+Hey! How are you?
+Your input ->  drizzly                                                                                                                                                                                                                                        
+Here is something to cheer you up:
+Image: https://i.imgur.com/nGF1K8f.jpg
+Did that help you?
+Your input ->  Grr!                                                                                                                                                                                                                                           
+Bye
+Your input ->  /stop                                                                                                                                                                                                                                          
+2019-10-28 20:35:42 INFO     root  - Killing Sanic server now.
+$
+```
+
+Close enough!
+
+## Inspect the default story
+
+___Stories___ are where Rasa really starts to shine.
+
+Lets look at our default story:
+
+```bash
+$ cat app/data/stories.md
+## happy path
+* greet
+  - utter_greet
+* mood_great
+  - utter_happy
+
+## sad path 1
+* greet
+  - utter_greet
+* mood_unhappy
+  - utter_cheer_up
+  - utter_did_that_help
+* affirm
+  - utter_happy
+
+## sad path 2
+* greet
+  - utter_greet
+* mood_unhappy
+  - utter_cheer_up
+  - utter_did_that_help
+* deny
+  - utter_goodbye
+
+## say goodbye
+* goodbye
+  - utter_goodbye
+
+## bot challenge
+* bot_challenge
+  - utter_iamabot
+$
+```
+
+Finally, lets have a look at our default domain:
+
+```bash
+$ cat app/domain.yml
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+
+actions:
+- utter_greet
+- utter_cheer_up
+- utter_did_that_help
+- utter_happy
+- utter_goodbye
+- utter_iamabot
+
+templates:
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+$
+```
+
 ## To Do
 
+- [ ] Train a Rasa Model
+- [ ] Investigate Rasa's [Training Data Format](http://rasa.com/docs/rasa/nlu/training-data-format/)
+- [ ] Investigate Rasa's [Custom Actions](http://rasa.com/docs/rasa/core/actions/#custom-actions)
+- [ ] Investigate Rasa's [Pipelines](http://rasa.com/docs/rasa/nlu/choosing-a-pipeline/)
 - [ ] Write a custom [Tracker Store](http://rasa.com/docs/rasa/api/tracker-stores/)
 
 ## Credits
