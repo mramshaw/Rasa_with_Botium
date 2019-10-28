@@ -22,6 +22,8 @@ One innovation of the Rasa Stack is that it depends upon an over-arching concept
 
 Other frameworks have roughly similiar approaches, but they are never as explicit.
 
+Check out my Rasa testing with [Docker](./Docker/README.md).
+
 ## Botium
 
 ![Botium Logo](images/Botium_logo.png)
@@ -30,8 +32,6 @@ Botium describes itself as "The Selenium for Chatbots".
 
 It offers a number of integrations (which it refers to as "connectors"),
  both for testing Alexa Skills as well as Dialogflow apps.
-
-Check out my Rasa testing with [Docker](./Docker/README.md).
 
 ## Privacy
 
