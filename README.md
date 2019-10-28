@@ -31,6 +31,8 @@ Botium describes itself as "The Selenium for Chatbots".
 It offers a number of integrations (which it refers to as "connectors"),
  both for testing Alexa Skills as well as Dialogflow apps.
 
+Check out my Rasa testing with [Docker](./Docker/README.md).
+
 ## Privacy
 
 For my slackbot I used __Wit.ai__ - which is owned by __Facebook__.
@@ -86,7 +88,8 @@ The following article seems to give a good grounding on BDD with Cucumber & Gher
 
 ## To Do
 
-- [ ] Investigate Rasa
+- [x] Investigate Rasa
+- [ ] More testing with Rasa
 - [ ] Test Botium Connector for Alexa
 - [ ] Test Botium Connector for Dialogflow
 - [ ] Investigate [Botium BDD Samples](http://github.com/codeforequity-at/botium-bdd-samples)

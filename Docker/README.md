@@ -456,6 +456,8 @@ $ cat app/data/stories.md
 $
 ```
 
+## Inspect the default domain
+
 Finally, lets have a look at our default domain:
 
 ```bash
