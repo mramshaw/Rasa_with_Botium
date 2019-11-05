@@ -7,13 +7,14 @@ Trying out Rasa with Docker
 The contents are as follows:
 
 * [Verify Prerequisites](#verify-prerequisites)
-* [Check for the latest version of Rasa](#check-for-the-latest-version-of-rasa)
-* [Pull the Docker image](#pull-the-docker-image)
+    * [Check for the latest version of Rasa](#check-for-the-latest-version-of-rasa)
+    * [Pull the Docker image](#pull-the-docker-image)
 * [Create a project](#create-a-project)
-* [Inspect the default intents](#inspect-the-default-intents)
-* [Interact with the bot](#interact-with-the-bot)
-* [Inspect the default story](#inspect-the-default-story)
-* [Inspect the default domain](#inspect-the-default-domain)
+    * [Inspect the default intents](#inspect-the-default-intents)
+    * [Interact with the bot](#interact-with-the-bot)
+    * [Inspect the default story](#inspect-the-default-story)
+    * [Inspect the default domain](#inspect-the-default-domain)
+    * [Create a visualization](#create-a-visualization)
 * [To Do](#to-do)
 * [Credits](#credits)
 
@@ -28,11 +29,11 @@ docker-compose version 1.23.1, build b02f1306
 $
 ```
 
-## Check for the latest version of Rasa
+#### Check for the latest version of Rasa
 
 __1.4.2__ as per http://hub.docker.com/r/rasa/rasa/tags
 
-## Pull the Docker image
+#### Pull the Docker image
 
 ```bash
 $ docker pull rasa/rasa:1.4.2
@@ -327,7 +328,9 @@ If you want to speak to the assistant, run 'rasa shell' at any time inside the p
 $
 ```
 
-## Inspect the default intents
+[Note that, by default, `rasa` trained and saved the model.]
+
+#### Inspect the default intents
 
 ```bash
 $ cat app/data/nlu.md
@@ -390,7 +393,7 @@ $ cat app/data/nlu.md
 $
 ```
 
-## Interact with the bot
+#### Interact with the bot
 
 Lets see how it deals with imperfect data:
 
@@ -414,7 +417,7 @@ $
 
 Close enough!
 
-## Inspect the default story
+#### Inspect the default story
 
 ___Stories___ are where Rasa really starts to shine.
 
@@ -456,7 +459,7 @@ $ cat app/data/stories.md
 $
 ```
 
-## Inspect the default domain
+#### Inspect the default domain
 
 Finally, lets have a look at our default domain:
 
@@ -500,6 +503,22 @@ templates:
   - text: "I am a bot, powered by Rasa."
 $
 ```
+
+#### Create a visualization
+
+Finally, lets create a visualization:
+
+```bash
+$ docker run -v $(pwd)/app:/app --name rasa -it --rm rasa/rasa:1.4.2 visualize
+2019-11-05 19:08:30 INFO     rasa.core.visualize  - Starting to visualize stories...
+Processed Story Blocks: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00, 5244.19it/s, # trackers=1]
+2019-11-05 19:08:30 INFO     rasa.core.visualize  - Finished graph creation. Saved into file:///app/graph.html
+$
+```
+
+If we open file:///app/graph.html in a browser, it should look as follows:
+
+![Rasa visualization](../images/Rasa_visualization.png)
 
 ## To Do
 
