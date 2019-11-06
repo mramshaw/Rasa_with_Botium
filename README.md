@@ -41,6 +41,9 @@ For my Alexa Skills I used __Alexa__ - which is owned by __Amazon__.
 
 For my Google Assistant Apps I used __Dialogflow__ - which is owned by __Google__.
 
+While I have not personally used it, there is also [LUIS](http://www.luis.ai) - which is owned by
+[Microsoft](http://azure.microsoft.com/en-us/services/cognitive-services/language-understanding-intelligent-service/).
+
 For anyone remotely concerned about privacy, being able to track user data and
 how it is processed via Open-Source code is definitely worth considering.
 
