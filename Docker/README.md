@@ -461,7 +461,7 @@ $
 
 #### Inspect the default domain
 
-Finally, lets have a look at our default domain:
+Lets examine our default domain:
 
 ```bash
 $ cat app/domain.yml
@@ -516,13 +516,14 @@ Processed Story Blocks: 100%|█████████████████
 $
 ```
 
-If we open file:///app/graph.html in a browser, it should look as follows:
+Now if we open file:///app/graph.html in a browser, it should look as follows:
 
 ![Rasa visualization](../images/Rasa_visualization.png)
 
 ## To Do
 
 - [ ] Train a Rasa Model
+- [ ] Automate the testing of our bot
 - [ ] Investigate Rasa's [Training Data Format](http://rasa.com/docs/rasa/nlu/training-data-format/)
 - [ ] Investigate Rasa's [Custom Actions](http://rasa.com/docs/rasa/core/actions/#custom-actions)
 - [ ] Investigate Rasa's [Pipelines](http://rasa.com/docs/rasa/nlu/choosing-a-pipeline/)

@@ -10,6 +10,22 @@ Rasa is a general chatbot framework, while Botium is a generic chatbot testing f
 
 Both can be added into existing frameworks via [webhooks](http://en.wikipedia.org/wiki/Webhook).
 
+## Contents
+
+The contents are as follows:
+
+* [Rasa](#rasa)
+* [Botium](#botium)
+* [Privacy](#privacy)
+* [Reference](#reference)
+    * [Why Rasa](#why-rasa)
+    * [Rasa Docs](#rasa-docs)
+    * [Rasa Changelog](#rasa-changelog)
+    * [Rasa Blog](#rasa-blog)
+    * [Botium Blog](#botium-blog)
+    * [Botium testing with BDD](#botium-testing-with-bdd)
+* [To Do](#to-do)
+
 ## Rasa
 
 ![Rasa Logo](images/21214473.png)
@@ -70,6 +86,12 @@ And the Rasa Blog version:
 The documentation for Rasa may be found here:
 
     http://rasa.com/docs/
+
+#### Rasa Changelog
+
+The changelog for Rasa may be found here:
+
+    http://rasa.com/docs/rasa/changelog/
 
 #### Rasa Blog
 
