@@ -11,6 +11,8 @@ The contents are as follows:
     * [Check for the latest version of Rasa](#check-for-the-latest-version-of-rasa)
     * [Pull the Docker image](#pull-the-docker-image)
 * [Create the dafault project](#create-the-default-project)
+* [Use a different pipeline](#use-a-different-pipeline)
+* [Use a different language](#use-a-different-language)
 * [To Do](#to-do)
 * [Credits](#credits)
 
@@ -59,7 +61,7 @@ $
 
 Rasa is supplied with a default project.
 
-For details of creating the [default Rasa project](./01-Default_project.md)
+For details of creating the [default Rasa project](./01-Default_project.md).
 
 ## Use a different pipeline
 
@@ -69,11 +71,20 @@ There is also a `pretrained_embeddings_spacy` pipeline.
 
 Read about the difference [here](http://rasa.com/docs/rasa/nlu/choosing-a-pipeline/#the-short-answer).
 
-For details of using the [pretrained spaCy embeddings](./02-Pretrained_spaCy_embeddings.md)
+For details of using the [pretrained spaCy embeddings](./02-Pretrained_spaCy_embeddings.md).
+
+## Use a different language
+
+By default, English is used.
+
+Lets try with a different language.
+
+For details of using [French](./03-French.md).
 
 ## To Do
 
 - [x] Train a Rasa Model
+- [x] Train a Rasa Model in French
 - [ ] Automate the testing of our bot
 - [ ] Investigate Rasa's [Training Data Format](http://rasa.com/docs/rasa/nlu/training-data-format/)
 - [ ] Investigate Rasa's [Custom Actions](http://rasa.com/docs/rasa/core/actions/#custom-actions)

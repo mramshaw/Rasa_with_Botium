@@ -1,0 +1,36 @@
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+
+actions:
+- utter_greet
+- utter_cheer_up
+- utter_did_that_help
+- utter_happy
+- utter_goodbye
+- utter_iamabot
+
+templates:
+  utter_greet:
+  - text: "Salut, comment vas tu?"
+
+  utter_cheer_up:
+  - text: "Voici quelque chose pour vous remonter le moral:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Est-ce que cela vous a aidé?"
+
+  utter_happy:
+  - text: "Super, continuez!"
+
+  utter_goodbye:
+  - text: "Au revoir"
+
+  utter_iamabot:
+  - text: "Je suis un bot, propulsé par Rasa."

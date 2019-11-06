@@ -47,7 +47,7 @@ Annoyingly, it insists on training this model.
 
 Update [spaCy/config.yml](./spaCy/config.yml), replacing `supervised_embeddings` with `pretrained_embeddings_spacy`.
 
-#### Pull the Docker image
+## Pull the Docker image
 
 In order to use spaCy, we will need to pull the appropriate Docker image:
 
@@ -70,6 +70,7 @@ Digest: sha256:762ecc523d524159d204df110d86e9a0c1b30fba7a9e520c484f7849e006f37c
 Status: Downloaded newer image for rasa/rasa:1.4.2-spacy-en
 docker.io/rasa/rasa:1.4.2-spacy-en
 $ 
+```
 
 ## Train the model
 
@@ -391,7 +392,7 @@ If you want to speak to the assistant, run 'rasa shell' at any time inside the p
 $
 ```
 
-Hmm, cannot really comapre them, it seems to be apples versus oranges ...
+Hmm, cannot really compare them, it seems to be apples versus oranges ...
 
 ## Interact with the bot
 
