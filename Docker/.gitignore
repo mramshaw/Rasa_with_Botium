@@ -1,6 +1,9 @@
 # Ignore any Python build artifacts
 app/__init__.py
 app/__pycache__/
+spaCy/__init__.py
+spaCy/__pycache__/
 
 # Ignore any generated models
 app/models/**
+spaCy/models/**
