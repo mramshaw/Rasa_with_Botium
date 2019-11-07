@@ -85,7 +85,7 @@ For details of using [French](./03-French.md).
 
 - [x] Train a Rasa Model
 - [x] Train a Rasa Model in French
-- [ ] Automate the testing of our bot
+- [ ] Automate the testing of our bots
 - [ ] Investigate Rasa's [Training Data Format](http://rasa.com/docs/rasa/nlu/training-data-format/)
 - [ ] Investigate Rasa's [Custom Actions](http://rasa.com/docs/rasa/core/actions/#custom-actions)
 - [ ] Investigate Rasa's [Pipelines](http://rasa.com/docs/rasa/nlu/choosing-a-pipeline/)

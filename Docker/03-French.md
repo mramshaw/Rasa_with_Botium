@@ -45,11 +45,11 @@ $
 
 Update [french/config.yml](./french/config.yml), replacing `en` with `fr` and `supervised_embeddings` with `pretrained_embeddings_spacy`.
 
-Also, update [french/domain.yml](./french/domain.yml), [french/data/nlu.yml](./french/data/nlu.yml), and [french/data/stories.yml](./french/data/stories.yml).
+Also, update [french/domain.yml](./french/domain.yml), [french/data/nlu.md](./french/data/nlu.md), and [french/data/stories.md](./french/data/stories.md).
 
 ## Train the model
 
-Now lets train (okay, retrain) the model:
+Now lets retrain our model:
 
 ```bash
 $ docker run -v $(pwd)/french:/app --name rasa -it --rm mramshaw4docs/rasa:latest-spacy-fr train
