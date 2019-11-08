@@ -10,9 +10,10 @@ The contents are as follows:
     * [`docker` and `docker-compose`](#docker-and-docker-compose)
     * [Check for the latest version of Rasa](#check-for-the-latest-version-of-rasa)
     * [Pull the Docker image](#pull-the-docker-image)
-* [Create the dafault project](#create-the-default-project)
+* [Create the default project](#create-the-default-project)
 * [Use a different pipeline](#use-a-different-pipeline)
 * [Use a different language](#use-a-different-language)
+* [Rasa pipelines](#rasa-pipelines)
 * [To Do](#to-do)
 * [Credits](#credits)
 
@@ -65,6 +66,8 @@ For details of creating the [default Rasa project](./01-Default_project.md).
 
 ## Use a different pipeline
 
+Rasa has a number of [pipeline options](#rasa-pipelines).
+
 By default, the `supervised_embeddings` pipeline is used.
 
 There is also a `pretrained_embeddings_spacy` pipeline.
@@ -81,6 +84,27 @@ Lets try with a different language.
 
 For details of using [French](./03-French.md).
 
+## Rasa pipelines
+
+Rasa offers the following pipelines:
+
+1. supervised_embeddings (as used in the [default Rasa project](./01-Default_project.md))
+1. pretrained_embeddings_spacy (as used in [pretrained spaCy embeddings](./02-Pretrained_spaCy_embeddings.md))
+1. MITIE
+1. Custom
+
+Only the first two are good choices, as MITIE seems to be on the way out and a Custom solution is
+probably best left to experts.
+
+> The MITIE backend performs well for small datasets, but training can take very long if you have more than a couple of hundred examples.
+>
+> However, we do not recommend that you use it as mitie support is likely to be deprecated in a future release.
+
+From: http://rasa.com/docs/rasa/nlu/choosing-a-pipeline/#mitie
+
+Both the `supervised_embeddings` and the `pretrained_embeddings_spacy` pipelines are stacks of individual
+processing steps - which may be customized if needed.
+
 ## To Do
 
 - [x] Train a Rasa Model
@@ -88,7 +112,7 @@ For details of using [French](./03-French.md).
 - [ ] Automate the testing of our bots
 - [ ] Investigate Rasa's [Training Data Format](http://rasa.com/docs/rasa/nlu/training-data-format/)
 - [ ] Investigate Rasa's [Custom Actions](http://rasa.com/docs/rasa/core/actions/#custom-actions)
-- [ ] Investigate Rasa's [Pipelines](http://rasa.com/docs/rasa/nlu/choosing-a-pipeline/)
+- [x] Investigate Rasa's [Pipelines](http://rasa.com/docs/rasa/nlu/choosing-a-pipeline/)
 - [ ] Write a custom [Tracker Store](http://rasa.com/docs/rasa/api/tracker-stores/)
 
 ## Credits
