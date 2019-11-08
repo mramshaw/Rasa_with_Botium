@@ -1,5 +1,7 @@
 # Docker
 
+![Docker icon](../images/Docker-R-Logo-08-2018-Monochomatic-RGB_Moby-x1.png)
+
 Trying out Rasa with Docker
 
 ## Contents
@@ -13,6 +15,7 @@ The contents are as follows:
 * [Create the default project](#create-the-default-project)
 * [Use a different pipeline](#use-a-different-pipeline)
 * [Use a different language](#use-a-different-language)
+* [Test a trained Rasa Model](#test-a-trained-rasa-model)
 * [Rasa pipelines](#rasa-pipelines)
 * [To Do](#to-do)
 * [Credits](#credits)
@@ -84,12 +87,110 @@ Lets try with a different language.
 
 For details of using [French](./03-French.md).
 
+## Test a trained Rasa Model
+
+Lets try testing our French model with Rasa:
+
+```bash
+$ docker run -v $(pwd)/french:/app --name rasa -it --rm mramshaw4docs/rasa:latest-spacy-fr test
+Processed Story Blocks: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00, 5245.50it/s, # trackers=1]
+2019-11-08 15:51:57 INFO     rasa.core.test  - Evaluating 5 stories
+Progress:
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00, 27.67it/s]
+2019-11-08 15:51:58 INFO     rasa.core.test  - Finished collecting predictions.
+2019-11-08 15:51:58 INFO     rasa.core.test  - Evaluation Results on CONVERSATION level:
+2019-11-08 15:51:58 INFO     rasa.core.test  - 	Correct:          5 / 5
+2019-11-08 15:51:58 INFO     rasa.core.test  - 	F1-Score:         1.000
+2019-11-08 15:51:58 INFO     rasa.core.test  - 	Precision:        1.000
+2019-11-08 15:51:58 INFO     rasa.core.test  - 	Accuracy:         1.000
+2019-11-08 15:51:58 INFO     rasa.core.test  - 	In-data fraction: 1
+2019-11-08 15:51:58 INFO     rasa.core.test  - Evaluation Results on ACTION level:
+2019-11-08 15:51:58 INFO     rasa.core.test  - 	Correct:          22 / 22
+2019-11-08 15:51:58 INFO     rasa.core.test  - 	F1-Score:         1.000
+2019-11-08 15:51:58 INFO     rasa.core.test  - 	Precision:        1.000
+2019-11-08 15:51:58 INFO     rasa.core.test  - 	Accuracy:         1.000
+2019-11-08 15:51:58 INFO     rasa.core.test  - 	In-data fraction: 1
+2019-11-08 15:51:58 INFO     rasa.core.test  - 	Classification report: 
+                     precision    recall  f1-score   support
+
+      utter_iamabot       1.00      1.00      1.00         1
+        utter_happy       1.00      1.00      1.00         2
+     utter_cheer_up       1.00      1.00      1.00         2
+      utter_goodbye       1.00      1.00      1.00         2
+      action_listen       1.00      1.00      1.00        10
+utter_did_that_help       1.00      1.00      1.00         2
+        utter_greet       1.00      1.00      1.00         3
+
+          micro avg       1.00      1.00      1.00        22
+          macro avg       1.00      1.00      1.00        22
+       weighted avg       1.00      1.00      1.00        22
+
+2019-11-08 15:51:58 INFO     rasa.nlu.test  - Confusion matrix, without normalization: 
+[[10  0  0  0  0  0  0]
+ [ 0  2  0  0  0  0  0]
+ [ 0  0  2  0  0  0  0]
+ [ 0  0  0  2  0  0  0]
+ [ 0  0  0  0  3  0  0]
+ [ 0  0  0  0  0  2  0]
+ [ 0  0  0  0  0  0  1]]
+2019-11-08 15:52:18 INFO     rasa.nlu.components  - Added 'SpacyNLP' to component cache. Key 'SpacyNLP-fr'.
+2019-11-08 15:52:18 INFO     rasa.nlu.test  - Running model for predictions:
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 43/43 [00:00<00:00, 247.87it/s]
+2019-11-08 15:52:18 INFO     rasa.nlu.test  - Intent evaluation results:
+2019-11-08 15:52:18 INFO     rasa.nlu.test  - Intent Evaluation: Only considering those 43 examples that have a defined intent out of 43 examples
+2019-11-08 15:52:18 INFO     rasa.nlu.test  - Classification report saved to results/intent_report.json.
+2019-11-08 15:52:18 INFO     rasa.nlu.test  - Incorrect intent predictions saved to results/intent_errors.json.
+2019-11-08 15:52:18 INFO     rasa.nlu.test  - Confusion matrix, without normalization: 
+[[5 0 0 0 0 0 0]
+ [0 4 0 0 0 0 0]
+ [0 0 6 0 0 0 0]
+ [0 0 0 3 1 0 0]
+ [0 0 0 0 6 0 0]
+ [0 0 0 0 0 8 0]
+ [0 0 0 0 0 1 9]]
+2019-11-08 15:52:20 INFO     rasa.nlu.test  - Entity evaluation results:
+2019-11-08 15:52:20 INFO     rasa.nlu.test  - Evaluation for entity extractor: CRFEntityExtractor 
+2019-11-08 15:52:20 WARNING  rasa.nlu.test  - No labels to evaluate. Skip evaluation.
+2019-11-08 15:52:20 INFO     rasa.nlu.test  - Classification report for 'CRFEntityExtractor' saved to 'results/CRFEntityExtractor_report.json'.
+2019-11-08 15:52:20 INFO     rasa.nlu.test  - Your model predicted all entities successfully.
+$
+```
+
+And ... our [failed_stories.md](./french/results/failed_stories.md) file looks good:
+
+```
+<!-- All stories passed -->
+```
+
+But ... our [intent_errors.json file](./french/results/intents_error.json) file shows some issues:
+
+```json
+[
+  {
+    "text": "bye",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.34472269022523067
+    }
+  },
+  {
+    "text": "triste",
+    "intent": "mood_unhappy",
+    "intent_prediction": {
+      "name": "mood_great",
+      "confidence": 0.3732119813799952
+    }
+  }
+]
+```
+
 ## Rasa pipelines
 
 Rasa offers the following pipelines:
 
-1. supervised_embeddings (as used in the [default Rasa project](./01-Default_project.md))
-1. pretrained_embeddings_spacy (as used in [pretrained spaCy embeddings](./02-Pretrained_spaCy_embeddings.md))
+1. `supervised_embeddings` (as used in the [default Rasa project](./01-Default_project.md))
+1. `pretrained_embeddings_spacy` (as used in [pretrained spaCy embeddings](./02-Pretrained_spaCy_embeddings.md))
 1. MITIE
 1. Custom
 
@@ -105,10 +206,14 @@ From: http://rasa.com/docs/rasa/nlu/choosing-a-pipeline/#mitie
 Both the `supervised_embeddings` and the `pretrained_embeddings_spacy` pipelines are stacks of individual
 processing steps - which may be customized if needed.
 
+Or these individual steps can be stacked to create a completely __Custom__ pipeline - which is perhaps
+best left to experts.
+
 ## To Do
 
 - [x] Train a Rasa Model
 - [x] Train a Rasa Model in French
+- [x] Test a trained Rasa Model
 - [ ] Automate the testing of our bots
 - [ ] Investigate Rasa's [Training Data Format](http://rasa.com/docs/rasa/nlu/training-data-format/)
 - [ ] Investigate Rasa's [Custom Actions](http://rasa.com/docs/rasa/core/actions/#custom-actions)
